@@ -1,0 +1,119 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/*border: 1px solid red;*/
+}
+
+#body {
+	background-color: #255326;
+	height: 100dvh;
+	width: 100dvw;
+}
+
+.barra-horizontal {
+	height: 3rem;
+	width: 100%;
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.barra-horizontal a {
+	display: block;
+	margin: 0 0.5rem;
+    color: white;
+    text-decoration: none;
+	width: 10%;
+	height: 90%;
+	text-align: center;
+}
+
+#slots-link {
+	margin-left: 45%;
+}
+
+#index-link{
+	margin-right: 45%;
+}
+
+.barra-horizontal a:hover {
+	width: max-content;
+	height: max-content;
+    background-color: #ddd;
+    color: black;
+}
+
+.slot-machine{
+	width: 30%;
+	height: 50%;
+	background-color: #333;
+	display: flex;
+	margin: auto;
+	justify-content: space-around;
+} 
+  
+#reel1, #reel2, #reel3 {
+	box-shadow: inset #161616 0px 10px 10px;
+	width: 250px;
+	height: 250px;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	align-self: center;
+}
+
+.reel-box{
+	margin: 5px;
+	height: 64px;
+	width: 64px;
+}
+
+.reel-box > img{
+	height: 64px;
+	width: 64px;	
+}
+
+  
+.symbol {
+	width: 50px;
+	height: 50px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	margin: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.image{
+	background-color: unset;
+	width: 64px;
+	height: 64px;
+}
+
+.spin-button {
+	width: 100px;
+	height: 50px;
+	background-color: #4CAF50;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.spin-button:hover {
+	background-color: #3e8e41;
+}
+
+.win-message {
+	font-size: 24px;
+	font-weight: bold;
+	color: #fff;
+	background-color: #4CAF50;
+	padding: 10px;
+	border-radius: 5px;
+	display: none;
+}
