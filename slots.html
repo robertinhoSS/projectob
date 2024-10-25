@@ -8,53 +8,45 @@
 	
 </head>
 <header class="barra-horizontal">
-	<a id="index-link" href="index.html"><span class="material-symbols-outlined">home</span></a>
-	<a id="slots-link" href="slots.html">slots</a>
+	<div class="link-container" id="home-lnk-container">
+		<a id="index-link" href="index.html"><span class="material-symbols-outlined">home</span></a>
+	</div>
+	<div class="link-container" id="slots-lnk-container">
+		<a id="slots-link" href="slots.html">slots</a>
+	</div>
 </header>
 <body id="body">
-	
-
-<div id="slot-container">
-	<div class="slot-machine">
-		<div id="reel1">
-			<div class="reel-box top first">
-				<img src="./img/bar.png" alt="">
+	<div id="slot-container">
+		<div id="slot-machine">
+			<div id="reel1">
+				<div class="top first">
+				</div>
+				<div class="center first">
+				</div>
+				<div class="bottom first">
+				</div>
 			</div>
-			<div class="reel-box cente first">
-				<img src="./img/seven.png" alt="">
+			<div id="reel2">
+				<div class="top second">
+				</div>
+				<div class="center second">
+				</div>
+				<div class="bottom second">
+				</div>
 			</div>
-			<div class="reel-box bottom first">
-				<img src="./img/lemon.png" alt="">
-			</div>
-		</div>
-		<div id="reel2">
-			<div class="reel-box top second">
-				<img src="./img/bar.png" alt="">
-			</div>
-			<div class="reel-box cente second">
-				<img src="./img/seven.png" alt="">
-			</div>
-			<div class="reel-box bottom second">
-				<img src="./img/lemon.png" alt="">
-			</div>
-		</div>
-		<div id="reel3">
-			<div class="reel-box top third">
-				<img src="./img/bar.png" alt="">
-			</div>
-			<div class="reel-box cente third">
-				<img src="./img/seven.png" alt="">			
-			</div>
-			<div class="reel-box bottom third">
-				<img src="./img/lemon.png" alt="">
+			<div id="reel3">
+				<div class="top third">
+				</div>
+				<div class="center third">
+				</div>
+				<div class="bottom third">
+				</div>
 			</div>
 		</div>
+		<button id="spin-button"></button>
 	</div>
-	<button class="spin-button">Spin</button>
-</div>
-
-
   <div class="win-message"></div>
-<script src="slots.js"></script>
+  <script src="./slots.js"></script>
 </body>
+
 </html>

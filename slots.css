@@ -11,58 +11,78 @@
 	width: 100dvw;
 }
 
-.barra-horizontal {
-	height: 3rem;
+.barra-horizontal {	
+	height: 4rem;
 	width: 100%;
     background-color: #333;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+	flex-direction: row;
 }
 
-.barra-horizontal a {
+.link-container {
+	width: 100%;
+}
+
+.link-container > a {
 	display: block;
+	color: white;
 	margin: 0 0.5rem;
-    color: white;
-    text-decoration: none;
-	width: 10%;
-	height: 90%;
 	text-align: center;
+	text-decoration: none;
+	width: 10rem;
+	height: 100%;
+	align-content: center;
 }
 
-#slots-link {
-	margin-left: 45%;
+#home-lnk-container {}
+
+#slots-lnk-container {
+	direction: rtl;
 }
 
-#index-link{
-	margin-right: 45%;
+.link-container > a:hover {
+	border: 1px solid white;
+	border-radius: 5px;
+	width: 10rem;
+	height: 100%;
+    color: white;
 }
 
-.barra-horizontal a:hover {
-	width: max-content;
-	height: max-content;
-    background-color: #ddd;
-    color: black;
-}
-
-.slot-machine{
+#slot-container {
+	border-radius: 8px;
+	background-color: #894124;
+	opacity: 0.8;
+	background-image: radial-gradient(circle at center center, #c4bc03, #894124), repeating-radial-gradient(circle at center center, #c4bc03, #c4bc03, 10px, transparent 20px, transparent 10px);
+	background-blend-mode: multiply;
+	display: flex;
+	flex-direction: column;
+	height: 80%;
 	width: 30%;
-	height: 50%;
+	margin: 4rem auto;
+}
+
+#slot-machine{
+	height: 60%;
+	width: 70%;
 	background-color: #333;
 	display: flex;
-	margin: auto;
+	margin: 2rem auto;
 	justify-content: space-around;
+	border-bottom: 10px rgb(46, 45, 45) solid;
 } 
   
 #reel1, #reel2, #reel3 {
+	height: 100%;
 	box-shadow: inset #161616 0px 10px 10px;
-	width: 250px;
-	height: 250px;
+	width: 11rem;
 	background-color: #fff;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
 	align-self: center;
+	animation: glowing 0.5s infinite;
 }
 
 .reel-box{
@@ -78,10 +98,8 @@
 
   
 .symbol {
-	width: 50px;
-	height: 50px;
-	background-color: #fff;
-	border: 1px solid #ccc;
+	width: 4rem;
+	height: 4rem;
 	margin: 10px;
 	display: flex;
 	justify-content: center;
@@ -94,18 +112,19 @@
 	height: 64px;
 }
 
-.spin-button {
-	width: 100px;
-	height: 50px;
-	background-color: #4CAF50;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
+#spin-button {
+	margin: 2rem 60%;
+	height: 4rem;
+	width: 10rem;
+	background-color: #c42626;
+	border-bottom: 5px rgb(46, 45, 45) solid;
+	border-radius: 10px;
 	cursor: pointer;
+
 }
 
-.spin-button:hover {
-	background-color: #3e8e41;
+#spin-button:hover {
+	background-color: #f01b1b;
 }
 
 .win-message {
@@ -116,4 +135,14 @@
 	padding: 10px;
 	border-radius: 5px;
 	display: none;
+}
+
+
+/*Animación para a pantalla da tragaperras*/
+@keyframes glowing {
+	from{
+		background-color: #fff;
+	}to {
+		background-color: #dddddd;
+	}
 }
