@@ -3,11 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Slot Machine</title>
 	<link rel="stylesheet" href="slots.css">
-	
+	<noscript>
+		<div id="noscript-container">
+			<div id="ns-content">
+				<img id="no-javascript" src="./assets/no-javascript.png" alt="Javascript blocked"/>
+				<div id="ns-text-container">
+					<h1>Javascript Blocked!</h1>
+					<p>The game requires Javascript to work, please allow it in order to play, then reload the page.</p>
+				</div>
+			</div>
+		</div>
+	</noscript>
 </head>
-<header class="barra-horizontal">
+<header>
 	<div class="link-container" id="home-lnk-container">
 		<a id="index-link" href="index.html"><span class="material-symbols-outlined">home</span></a>
 	</div>
@@ -15,38 +25,112 @@
 		<a id="slots-link" href="slots.html">slots</a>
 	</div>
 </header>
-<body id="body">
+<body>
 	<div id="slot-container">
 		<div id="slot-machine">
 			<div id="reel1">
-				<div class="top first">
+				<div class="cell top first">
 				</div>
-				<div class="center first">
+				<div class="cell center first">
 				</div>
-				<div class="bottom first">
+				<div class="cell bottom first">
 				</div>
 			</div>
 			<div id="reel2">
-				<div class="top second">
+				<div class="cell top second">
 				</div>
-				<div class="center second">
+				<div class="cell center second">
 				</div>
-				<div class="bottom second">
+				<div class="cell bottom second">
 				</div>
 			</div>
 			<div id="reel3">
-				<div class="top third">
+				<div class="cell top third">
 				</div>
-				<div class="center third">
+				<div class="cell center third">
 				</div>
-				<div class="bottom third">
+				<div class="cell bottom third">
+				</div>
+			</div>			
+		</div>
+		<button id="spin-button"></button>
+		<div id="win-message"></div>
+	</div>
+	<aside id="scoreboard">
+		<div id="user-score">
+			<label id="score-label" for="score">Score  </label>
+			<input id="score" type="texfield" disabled placeholder="0"/>
+		</div>
+		<div>
+			<p id="conditions-p">~Win Conditions~</p>
+			<div>
+				<div class="scoreboard-row">
+					<div>
+						<img class="scoreboard-icon" src="./assets/seven.png" alt="seven"/>
+						<img class="scoreboard-icon" src="./assets/seven.png" alt="seven"/>
+						<img class="scoreboard-icon" src="./assets/seven.png" alt="seven"/>
+					</div>
+					<input class="points" type="text" disabled placeholder="1000"/>
+				</div>
+				<div class="scoreboard-row">
+					<div>
+						<img class="scoreboard-icon" src="./assets/bell.png" alt="bell"/>
+						<img class="scoreboard-icon" src="./assets/bell.png" alt="bell"/>
+						<img class="scoreboard-icon" src="./assets/bell.png" alt="bell"/>
+					</div>
+					<input class="points" type="text" disabled placeholder="500"/>
+				</div>
+				<div class="scoreboard-row">
+					<div>
+						<img class="scoreboard-icon" src="./assets/bar.png" alt="bar"/>
+						<img class="scoreboard-icon" src="./assets/bar.png" alt="bar"/>
+						<img class="scoreboard-icon" src="./assets/bar.png" alt="bar"/>	
+					</div>
+					<input class="points" type="text" disabled placeholder="250"/>
+				</div>
+				<div class="scoreboard-row">
+					<div>
+						<img class="scoreboard-icon" src="./assets/cherry.png" alt="cherry"/>
+						<img class="scoreboard-icon" src="./assets/cherry.png" alt="cherry"/>
+						<img class="scoreboard-icon" src="./assets/cherry.png" alt="cherry"/>					
+					</div>
+					<input class="points" type="text" disabled placeholder="150"/>
+				</div>
+				<div class="scoreboard-row">
+					<div>
+						<img class="scoreboard-icon" src="./assets/watermelon.png" alt="watermelon"/>
+						<img class="scoreboard-icon" src="./assets/watermelon.png" alt="watermelon"/>
+						<img class="scoreboard-icon" src="./assets/watermelon.png" alt="watermelon"/>					
+					</div>
+					<input class="points" type="text" disabled placeholder="100"/>
+				</div>
+				<div class="scoreboard-row">
+					<div>
+						<img class="scoreboard-icon" src="./assets/lemon.png" alt="lemon"/>
+						<img class="scoreboard-icon" src="./assets/lemon.png" alt="lemon"/>
+						<img class="scoreboard-icon" src="./assets/lemon.png" alt="lemon"/>					
+					</div>
+					<input class="points" type="text" disabled placeholder="75"/>
+				</div>
+				<div class="scoreboard-row">
+					<div>
+						<img class="scoreboard-icon" src="./assets/grapes.png" alt="grapes"/>
+						<img class="scoreboard-icon" src="./assets/grapes.png" alt="grapes"/>
+						<img class="scoreboard-icon" src="./assets/grapes.png" alt="grapes"/>						
+					</div>
+					<input class="points" type="text" disabled placeholder="50"/>
+				</div>
+				<div class="scoreboard-row">
+					<div>
+						<img class="scoreboard-icon" src="./assets/orange.png" alt="orange"/>
+						<img class="scoreboard-icon" src="./assets/orange.png" alt="orange"/>
+						<img class="scoreboard-icon" src="./assets/orange.png" alt="orange"/>	
+					</div>
+					<input class="points" type="text" disabled placeholder="10"/>
 				</div>
 			</div>
 		</div>
-		<button id="spin-button"></button>
-	</div>
-  <div class="win-message"></div>
-  <script src="./slots.js"></script>
+	</aside>
 </body>
-
+<script src="./scripts/slots.js"></script>
 </html>

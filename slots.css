@@ -5,19 +5,32 @@
 	/*border: 1px solid red;*/
 }
 
-#body {
+body{
 	background-color: #255326;
 	height: 100dvh;
 	width: 100dvw;
+	display: grid;
+	grid-template: 
+	"nav-bar nav-bar nav-bar nav-bar nav-bar nav-bar"
+	"slots  slots . scores scores ."
+	"slots  slots . scores scores ."
+	"slots  slots . scores scores ."
+	"slots  slots . scores scores .";
 }
 
-.barra-horizontal {	
+/*---------------------------------------------------------------------------*/
+/*------------------------------HEADER---------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+
+header {	
 	height: 4rem;
 	width: 100%;
     background-color: #333;
     display: flex;
     justify-content: space-around;
 	flex-direction: row;
+	grid-area: nav-bar;
 }
 
 .link-container {
@@ -49,17 +62,22 @@
     color: white;
 }
 
+
+/*---------------------------------------------------------------------------*/
+/*-------------------------------SLOTS---------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+
 #slot-container {
+	grid-area: slots;
 	border-radius: 8px;
 	background-color: #894124;
-	opacity: 0.8;
 	background-image: radial-gradient(circle at center center, #c4bc03, #894124), repeating-radial-gradient(circle at center center, #c4bc03, #c4bc03, 10px, transparent 20px, transparent 10px);
 	background-blend-mode: multiply;
 	display: flex;
 	flex-direction: column;
-	height: 80%;
-	width: 30%;
-	margin: 4rem auto;
+	height: 90%;
+	margin: auto;
 }
 
 #slot-machine{
@@ -70,6 +88,7 @@
 	margin: 2rem auto;
 	justify-content: space-around;
 	border-bottom: 10px rgb(46, 45, 45) solid;
+	overflow: hidden;
 } 
   
 #reel1, #reel2, #reel3 {
@@ -83,19 +102,20 @@
 	justify-content: space-around;
 	align-self: center;
 	animation: glowing 0.5s infinite;
+	z-index: 1;
 }
 
 .reel-box{
 	margin: 5px;
 	height: 64px;
 	width: 64px;
+	
 }
 
 .reel-box > img{
 	height: 64px;
-	width: 64px;	
+	width: 64px;
 }
-
   
 .symbol {
 	width: 4rem;
@@ -105,6 +125,23 @@
 	justify-content: center;
 	align-items: center;
 }
+
+
+#reel1 > .cell > .symbol {
+	z-index: -1;
+	animation: spinning-reel 0.2s linear reverse;	
+}
+
+#reel2 > .cell > .symbol {
+	z-index: -1;
+	animation: spinning-reel 0.2s linear ;	
+}
+
+#reel3 > .cell > .symbol {
+	z-index: -1;
+	animation: spinning-reel 0.3s linear reverse;	
+}
+
 
 .image{
 	background-color: unset;
@@ -127,7 +164,7 @@
 	background-color: #f01b1b;
 }
 
-.win-message {
+#win-message {
 	font-size: 24px;
 	font-weight: bold;
 	color: #fff;
@@ -137,6 +174,83 @@
 	display: none;
 }
 
+/*---------------------------------------------------------------------------*/
+/*----------------------------SCOREBOARD-------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+#scoreboard{
+	grid-area: scores;
+	height: 95%;
+	border: 3px solid white;
+	border-radius: 10px;
+	margin: auto;
+	width: 100%;
+}
+
+#user-score{
+	margin: 1rem auto;
+	display: flex;
+	flex-direction: row;
+	height: 2rem;
+	color: white;
+	text-align: center;
+	font-size: x-large;
+	width: 100%;
+	justify-content: center;
+}
+
+#score-label{
+	margin-right: 15px;
+}
+
+#score{
+	font-size: xx-large;
+	text-align: right;
+	height: 95%;
+	background-color: unset;
+}
+
+#score::-webkit-input-placeholder {
+	color: rgb(255, 255, 255);
+	opacity: 1;
+}
+
+#conditions-p{
+	text-align: center;
+	font-size: x-large;
+	color: white;
+}
+
+.scoreboard-row{
+	display: flex;
+	margin: 0.5em auto;
+	height: 3.7rem;
+	width: 80%;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.scoreboard-icon{
+	background-color: #dddddd;
+	height: 100%;
+	width: 48px;
+}
+
+.points {
+	background-color: unset;
+	text-align: right;
+	width: min-content;
+	font-size: xx-large;
+}
+
+.points::-webkit-input-placeholder {
+	color: rgb(255, 255, 255);
+	opacity: 1;
+}
+
+/*---------------------------------------------------------------------------*/
+/*----------------------------ANIMATIONS-------------------------------------*/
+/*---------------------------------------------------------------------------*/
 
 /*Animación para a pantalla da tragaperras*/
 @keyframes glowing {
@@ -146,3 +260,53 @@
 		background-color: #dddddd;
 	}
 }
+
+/*Animación dos carretes*/
+@keyframes spinning-reel {
+	from{
+		transform: translateY(-600px);
+	}
+}
+
+/*---------------------------------------------------------------------------*/
+/*-------------------------NOSCRIPT STYLES-----------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+#noscript-container {
+	background-color: #1616169f;
+	height: 100vh;
+	width: 100vw;
+	z-index: 0;
+	position: absolute;
+
+}
+
+#ns-content {
+	padding: 5rem;
+	justify-content: space-around;
+	display: flex;
+	position: absolute;
+	height: 20rem;
+	width: 30rem;
+	top: 35%;
+	left: 40%;
+	background-color: white;
+	border-radius: 10px;
+	flex-direction: row;
+}
+
+#no-javascript{
+	margin: auto;
+	height: 8rem;
+	width: 8rem;
+}
+
+#ns-text-container{
+	margin: auto;
+	text-align: center;
+}
+
+/*---------------------------------------------------------------------------*/
+/*----------------------------RESPONSIVE-------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
