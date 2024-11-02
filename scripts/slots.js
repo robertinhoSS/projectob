@@ -4,7 +4,7 @@ const assets = "../assets/"
 //Declaración de elementos do HTML
 const slotMachine = document.querySelector('#slot-machine')
 const spinButton = document.querySelector('#spin-button')
-const winMessage = document.querySelector('.win-message')
+const winMessage = document.querySelector('#win-message')
   //Carretes da tragaperras
   const leftReel = document.querySelector('#reel1')
   const middleReel = document.querySelector('#reel2')
@@ -35,8 +35,12 @@ const symbols = [
   {name: 'grapes', points: 50},
   {name: 'seven', points: 1000},
   {name: 'bell', points: 500},
-  {name: 'bar', points: 250}];
+  {name: 'bar', points: 250}
+];
 
+//Mensaxes de fin
+const win = "WIN  WIN  WIN  WIN  WIN  WIN  WIN  WIN  WIN  WIN  WIN  WIN"
+const lose = "LOSE  LOSE  LOSE  LOSE  LOSE  LOSE  LOSE  LOSE  LOSE  LOSE  "
 
 //Selección dun simbolo aleatorio 
 function randomSymbol(){
@@ -75,9 +79,6 @@ function shuffleArray(array){
   return array
 }
 
-//Crea un carrete mediante a unión de 3 listas aleatorias de simbolos
-const reelPattern = [shuffleArray(symbols).concat(shuffleArray(symbols)).concat(shuffleArray(symbols))] 
-
 //Función do botón
 function spinReels() {
   clearState()
@@ -85,61 +86,53 @@ function spinReels() {
   setTimeout(checkForWin, 500);
 }
 
-const winningCombinations = [
-  topLeft.children[0].isEqualNode(topMiddle.children[0]) && topMiddle.children[0].isEqualNode(topRight.children[0]),
-  midLeft.children[0].isEqualNode(midMiddle.children[0]) && midMiddle.children[0].isEqualNode(midRight.children[0]),
-  botLeft.children[0].isEqualNode(botMiddle.children[0]) && botMiddle.children[0].isEqualNode(botRight.children[0]),
-  topLeft.children[0].isEqualNode(midMiddle.children[0]) && midMiddle.children[0].isEqualNode(botRight.children[0]),
-  botLeft.children[0].isEqualNode(midMiddle.children[0]) && midMiddle.children[0].isEqualNode(topRight.children[0])
-]
-
-
-//
+//Acciona a tragaperras ao pulsar o botón
 spinButton.addEventListener('click', spinReels);
 
-
-function checkForWin() {
-  switch(winningCombinations){
-    case(0):
-      console.log("Case 0")
-      winMessage.textContent = `You won! x3`;
-      winMessage.style.display = 'block';
-    case(1):
-      console.log("Case 0")
-      winMessage.textContent = `You won! x3`;
-      winMessage.style.display = 'block';
-    case(2):
-      console.log("Case 0")
-      winMessage.textContent = `You won! x3`;
-      winMessage.style.display = 'block';
-    case(3):
-      console.log("Case 0")
-      winMessage.textContent = `You won! x3`;
-      winMessage.style.display = 'block';
-    case(4):
-      console.log("Case 0")
-      winMessage.textContent = `You won! x3`;
-      winMessage.style.display = 'block';
-    default:
-      console.log("Case Loss")
-      winMessage.textContent = 'Better luck next time!';
-      winMessage.style.display = 'block';
-  }
-
-/*
-  if((topLeft.children[0].isEqualNode(topMiddle.children[0]) && topMiddle.children[0].isEqualNode(topRight.children[0])) 
-    || (midLeft.children[0].isEqualNode(midMiddle.children[0]) && midMiddle.children[0].isEqualNode(midRight.children[0])) 
-    || (botLeft.children[0].isEqualNode(botMiddle.children[0]) && botMiddle.children[0].isEqualNode(botRight.children[0]))){
-    winMessage.textContent = `You won! x3`;
-    winMessage.style.display = 'block';
-  }else {
-    winMessage.textContent = 'Better luck next time!';
-    winMessage.style.display = 'block';
-  }
-*/
+//Calcula os puntos cada vez que se consigue unha liña
+function calculateScore(){
+//TODO: Manipulate DOM to handle some score system
 }
 
+function checkForWin() {
+  //Abreviacións
+  const topLeftChild = topLeft.children[0]
+  const topMiddleChild = topMiddle.children[0]
+  const topRightChild = topRight.children[0]
+  const midLeftChild = midLeft.children[0]
+  const midMiddleChild = midMiddle.children[0]
+  const midRightChild = midRight.children[0]
+  const botLeftChild = botLeft.children[0]
+  const botMiddleChild = botMiddle.children[0]
+  const botRightChild = botRight.children[0]
 
+  //Resolución
+  if(topLeftChild.isEqualNode(topMiddleChild) && topMiddleChild.isEqualNode(topRightChild)){
+    setTimeout(2000)
+    winMessage.textContent = `${win}`
+    winMessage.style.color = 'green'
+  }else if(midLeftChild.isEqualNode(midMiddleChild) && midLeftChild.isEqualNode(midRightChild)){
+    setTimeout(2000)
+    winMessage.textContent = `${win}`
+    winMessage.style.color = 'green'
+  }else if(botLeftChild.isEqualNode(botMiddleChild) && botLeftChild.isEqualNode(botRightChild)){
+    setTimeout(2000)
+    winMessage.textContent = `${win}`
+    winMessage.style.color = 'green'
+  }else if(topLeftChild.isEqualNode(midMiddleChild) && topLeftChild .isEqualNode(botRightChild)){
+    setTimeout(2000)
+    winMessage.textContent = `${win}`
+    winMessage.style.color = 'green'
+  }else if(topRightChild.isEqualNode(midMiddleChild) && topRightChild.isEqualNode(botLeftChild)){
+    setTimeout(2000)
+    winMessage.textContent = `${win}`
+    winMessage.style.color = 'green'
+  }else{
+    setTimeout(2000)
+    winMessage.textContent = `${lose}`
+    winMessage.style.color = 'red'
+  }
+}
 
 /*
 function reelsDebug() {
@@ -155,4 +148,5 @@ function reelsDebug() {
 }
 reelsDebug()
 */
+  
   

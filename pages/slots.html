@@ -17,16 +17,16 @@
 		</div>
 	</noscript>
 </head>
-<header>
-	<div class="link-container" id="home-lnk-container">
-		<a id="index-link" href="index.html"><span class="material-symbols-outlined">home</span></a>
-	</div>
-	<div class="link-container" id="slots-lnk-container">
-		<a id="slots-link" href="slots.html">slots</a>
-	</div>
-</header>
 <body>
-	<div id="slot-container">
+	<header>
+		<div class="link-container" id="home-lnk-container">
+			<a id="index-link" href="index.html"><span class="material-symbols-outlined">home</span></a>
+		</div>
+		<div class="link-container" id="slots-lnk-container">
+			<a id="slots-link" href="slots.html">slots</a>
+		</div>
+	</header>
+	<main id="slot-container">
 		<div id="slot-machine">
 			<div id="reel1">
 				<div class="cell top first">
@@ -53,9 +53,11 @@
 				</div>
 			</div>			
 		</div>
-		<button id="spin-button"><span/></button>
-		<div id="win-message"></div>
-	</div>
+		<button id="spin-button" aria-label="spin"><span/></button>
+		<div id="state-message-container">
+			<pre id="win-message">PLAY  PLAY  PLAY  PLAY  PLAY  PLAY  PLAY  PLAY  PLAY  PLAY</pre>
+		</div>
+	</main>
 	<aside id="scoreboard">
 		<div id="user-score">
 			<label id="score-label" for="score">Score  </label>

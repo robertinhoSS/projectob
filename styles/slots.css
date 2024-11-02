@@ -6,9 +6,14 @@
 	/*border: 1px solid red;*/
 }
 
+@font-face {
+    font-family: "Pixeloid";
+    src: url(../assets/fonts/PixeloidSans-mLxMm.ttf) format("truetype");
+}
+
 body{
 	background: rgba(5, 74, 43, 0.904)
-    radial-gradient(rgba(255, 255, 255, 0.712) 10%, transparent 1%);
+    radial-gradient(rgba(180, 180, 180, 0.499) 10%, transparent 1%);
 	background-size: 30px 30px;
 	background-position: -5px -5px;
 	height: 100dvh;
@@ -30,6 +35,7 @@ body{
 header {	
 	height: 4.5rem;
 	width: 100%;
+	font-size: large;
     background-color: #333;
 	border: 1px solid rgb(87, 87, 87);
     display: flex;
@@ -87,7 +93,7 @@ header {
 
 #slot-machine{
 	height: 60%;
-	width: 70%;
+	width: 80%;
 	background-color: #333;
 	display: flex;
 	margin: 2rem auto;
@@ -131,7 +137,6 @@ header {
 	align-items: center;
 }
 
-
 #reel1 > .cell > .symbol {
 	z-index: -1;
 	animation: spinning-reel 0.2s linear reverse;	
@@ -146,7 +151,6 @@ header {
 	z-index: -1;
 	animation: spinning-reel 0.3s linear reverse;	
 }
-
 
 .image{
 	background-color: unset;
@@ -164,7 +168,7 @@ header {
 	cursor: pointer;
 	padding: 0.1em;
 	height: 4.2em;
-	border: 0.08em solid #fff;
+	border: 0.08em solid #2c0000;
 }
 
 #spin-button > span {
@@ -177,27 +181,38 @@ header {
 	width: 9.6rem;
 	height: 3.5em;
 	border-radius: 0.2em;
-	border: 0.08em solid #fff;
-	box-shadow: 0 0.4em 0.1em 0.019em #fff;
+	border: 0.08em solid #2c0000;
+	box-shadow: 0 0.4em 0.1em 0.019em #2c0000;
 }
 
 #spin-button>span:hover {
 	transition: all 0.5s;
 	transform: translate(0, 0.4em);
-	box-shadow: 0 0 0 0 #fff;
+	box-shadow: 0 0 0 0 #2c0000;
 	background-color: #f01b1b;
 }
 
-#win-message {
-	margin: 1rem;
-	font-size: 24px;
-	font-weight: bold;
-	color: #3ab600;
+#state-message-container{
+	height: 4rem;
 	background-color: #1a1a1a;
-	padding: 10px;
-	border-radius: 5px;
-	display: none;
-	animation: board 10s infinite;
+	margin: 1rem auto;
+	padding-bottom: 2rem;
+	width: 90%;
+	overflow: hidden;
+}
+
+#win-message {
+	height: 3rem;
+	width: 8rem;
+	margin: 1rem 0;
+	font-size: 32px;
+	font-family: Pixeloid;
+	font-weight: bold;
+	text-align: center;
+	color: goldenrod;
+	animation: label-start 6s linear forwards infinite,
+		blink 0.8s infinite,
+		label-end 6s linear forwards infinite;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -312,9 +327,30 @@ header {
 	}
 }
 
-@keyframes board {
-	from{
-		transform: translateX(-1000px);
+@keyframes label-start {
+	0%{
+		transform: translateX(-200%);	
+	}
+	100%{
+		transform: translateX(400%);
+	}
+}
+
+@keyframes label-end {
+	0%{
+		transform: translateX(-400%);	
+	}
+	100%{
+		transform: translateX(-200%);
+	}
+}
+
+@keyframes blink {
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
 	}
 }
 
@@ -547,7 +583,6 @@ header {
 
 
 }
-
 
 /*Pantalla de móvil ancha*/
 @media only screen and (max-width: 768px) {
