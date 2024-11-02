@@ -2,20 +2,24 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-weight: bold;
 	/*border: 1px solid red;*/
 }
 
 body{
-	background-color: #255326;
+	background: rgba(5, 74, 43, 0.904)
+    radial-gradient(rgba(255, 255, 255, 0.712) 10%, transparent 1%);
+	background-size: 30px 30px;
+	background-position: -5px -5px;
 	height: 100dvh;
 	width: 100dvw;
 	display: grid;
 	grid-template: 
 	"nav-bar nav-bar nav-bar nav-bar nav-bar nav-bar"
-	"slots  slots . scores scores ."
-	"slots  slots . scores scores ."
-	"slots  slots . scores scores ."
-	"slots  slots . scores scores .";
+	"scores scores . slots slots ."
+	"scores scores . slots slots ."
+	"scores scores . slots slots ."
+	"scores scores . slots slots .";
 }
 
 /*---------------------------------------------------------------------------*/
@@ -165,13 +169,15 @@ header {
 }
 
 #win-message {
+	margin: 1rem;
 	font-size: 24px;
 	font-weight: bold;
-	color: #fff;
-	background-color: #4CAF50;
+	color: #3ab600;
+	background-color: #1a1a1a;
 	padding: 10px;
 	border-radius: 5px;
 	display: none;
+	animation: board 10s infinite;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -179,11 +185,12 @@ header {
 /*---------------------------------------------------------------------------*/
 
 #scoreboard{
+	background-color: #333;
 	grid-area: scores;
-	height: 95%;
+	height: 100%;
 	border: 3px solid white;
-	border-radius: 10px;
-	margin: auto;
+	border-radius: 0 10px 10px 0 ;
+	margin: 0 auto;
 	width: 100%;
 }
 
@@ -204,10 +211,12 @@ header {
 }
 
 #score{
-	font-size: xx-large;
+	color: rgb(255, 255, 255);
+	font-size: x-large;
 	text-align: right;
 	height: 95%;
 	background-color: unset;
+	border-radius: 5px;
 }
 
 #score::-webkit-input-placeholder {
@@ -237,10 +246,13 @@ header {
 }
 
 .points {
+	color: rgb(255, 255, 255);
 	background-color: unset;
+	padding-right: 1em;
 	text-align: right;
 	width: min-content;
-	font-size: xx-large;
+	font-size: x-large;
+	border-radius: 5px;
 }
 
 .points::-webkit-input-placeholder {
@@ -265,6 +277,12 @@ header {
 @keyframes spinning-reel {
 	from{
 		transform: translateY(-600px);
+	}
+}
+
+@keyframes board {
+	from{
+		transform: translateX(-1000px);
 	}
 }
 
