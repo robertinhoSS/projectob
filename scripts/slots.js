@@ -1,5 +1,5 @@
 //Rutas do proxecto
-const assets = "./assets/"
+const assets = "../assets/"
 
 //Declaración de elementos do HTML
 const slotMachine = document.querySelector('#slot-machine')
