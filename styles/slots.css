@@ -28,9 +28,10 @@ body{
 
 
 header {	
-	height: 4rem;
+	height: 4.5rem;
 	width: 100%;
     background-color: #333;
+	border: 1px solid rgb(87, 87, 87);
     display: flex;
     justify-content: space-around;
 	flex-direction: row;
@@ -44,11 +45,11 @@ header {
 .link-container > a {
 	display: block;
 	color: white;
-	margin: 0 0.5rem;
+	margin: 0.2rem 0.5rem;
 	text-align: center;
 	text-decoration: none;
 	width: 10rem;
-	height: 100%;
+	height: 90%;
 	align-content: center;
 }
 
@@ -59,11 +60,11 @@ header {
 }
 
 .link-container > a:hover {
-	border: 1px solid white;
+	background-color: rgb(87, 87, 87);
 	border-radius: 5px;
 	width: 10rem;
-	height: 100%;
-    color: white;
+	height: 90%;
+    color: rgb(255, 203, 32);
 }
 
 
@@ -157,14 +158,33 @@ header {
 	margin: 2rem 60%;
 	height: 4rem;
 	width: 10rem;
-	background-color: #c42626;
+	background-color: #490f0f;
 	border-bottom: 5px rgb(46, 45, 45) solid;
-	border-radius: 10px;
+	border-radius: 0.3em;
 	cursor: pointer;
-
+	padding: 0.1em;
+	height: 4.2em;
+	border: 0.08em solid #fff;
 }
 
-#spin-button:hover {
+#spin-button > span {
+	background-color: #f01b1b;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	bottom: 0.4em;
+	width: 9.6rem;
+	height: 3.5em;
+	border-radius: 0.2em;
+	border: 0.08em solid #fff;
+	box-shadow: 0 0.4em 0.1em 0.019em #fff;
+}
+
+#spin-button>span:hover {
+	transition: all 0.5s;
+	transform: translate(0, 0.4em);
+	box-shadow: 0 0 0 0 #fff;
 	background-color: #f01b1b;
 }
 
@@ -185,11 +205,10 @@ header {
 /*---------------------------------------------------------------------------*/
 
 #scoreboard{
-	background-color: #333;
+    background-color: #333;
 	grid-area: scores;
-	height: 100%;
-	border: 3px solid white;
-	border-radius: 0 10px 10px 0 ;
+	height: 90vh;
+	border: 2px solid rgb(87, 87, 87);
 	margin: 0 auto;
 	width: 100%;
 }
@@ -211,7 +230,8 @@ header {
 }
 
 #score{
-	color: rgb(255, 255, 255);
+	color: rgb(255, 203, 32);
+
 	font-size: x-large;
 	text-align: right;
 	height: 95%;
@@ -219,8 +239,15 @@ header {
 	border-radius: 5px;
 }
 
-#score::-webkit-input-placeholder {
-	color: rgb(255, 255, 255);
+/*Válido só para Firefox e similares*/
+#score::-moz-placeholder{
+	color: rgb(255, 203, 32);
+	opacity: 1;
+}
+
+/*Válido só para Chromium e similares*/
+#score::-webkit-input-placeholder{
+	color: rgb(255, 203, 32);
 	opacity: 1;
 }
 
@@ -256,6 +283,11 @@ header {
 }
 
 .points::-webkit-input-placeholder {
+	color: rgb(255, 255, 255);
+	opacity: 1;
+}
+
+.points::-moz-placeholder {
 	color: rgb(255, 255, 255);
 	opacity: 1;
 }
@@ -328,3 +360,379 @@ header {
 /*----------------------------RESPONSIVE-------------------------------------*/
 /*---------------------------------------------------------------------------*/
 
+/*Pantalla de móvil pequena*/
+@media only screen and (max-width: 368) and (max-height: 568px) {
+
+	body{
+		background: rgba(5, 74, 43, 0.904)
+		radial-gradient(rgba(255, 255, 255, 0.712) 10%, transparent 1%);
+		background-size: 30px 30px;
+		background-position: -5px -5px;
+		height: 100vh;
+		width: 100vw;
+		display: grid;
+		grid-template: 
+		"nav-bar nav-bar nav-bar"
+		". scores ."
+		". scores ."
+		". slots ."
+		". slots .";
+	}
+
+	/*---------------------------------------------------------------------------*/
+	/*------------------------------HEADER---------------------------------------*/
+	/*---------------------------------------------------------------------------*/
+
+	header {	
+		height: 10vh;
+		width: 100vw;
+		background-color: #333;
+		border: 1px solid rgb(87, 87, 87);
+		display: flex;
+		flex-direction: row;
+		grid-area: nav-bar;
+	}
+
+	.link-container > a {
+		display: block;
+		color: white;
+		margin: 0.2rem 0.5rem;
+		text-align: center;
+		text-decoration: none;
+		width: 40%;
+		height: 90%;
+		align-content: center;
+	}
+
+	#home-lnk-container {
+		direction: rtl;
+	}
+
+	#slots-lnk-container {
+		direction: ltr;
+	}
+
+	.link-container > a:hover {
+		background-color: rgb(87, 87, 87);
+		border-radius: 5px;
+		width: 40%;
+		height: 90%;
+		color: rgb(255, 203, 32);
+}
+
+	/*---------------------------------------------------------------------------*/
+	/*----------------------------SCOREBOARD-------------------------------------*/
+	/*---------------------------------------------------------------------------*/
+
+	#scoreboard{
+		background-color: #333;
+		grid-area: scores;
+		border: 2px solid rgb(87, 87, 87);
+		width: 90vw;
+	}
+
+	#user-score{
+		display: flex;
+		flex-direction: row;
+		color: white;
+		text-align: center;
+		font-size: x-large;
+		width: 100%;
+		justify-content: center;
+	}
+
+	#score-label{
+		margin-right: 15px;
+	}
+
+	#score{
+		color: rgb(255, 203, 32);
+		font-size: x-large;
+		text-align: right;
+		height: 95%;
+		background-color: unset;
+		border-radius: 5px;
+	}
+
+	/*Válido só para Firefox e similares*/
+	#score::-moz-placeholder{
+		color: rgb(255, 203, 32);
+		opacity: 1;
+	}
+
+	/*Válido só para Chromium e similares*/
+	#score::-webkit-input-placeholder{
+		color: rgb(255, 203, 32);
+		opacity: 1;
+	}
+
+	#conditions-p{
+		text-align: center;
+		font-size: x-large;
+		color: white;
+	}
+
+	.scoreboard-row{
+		display: flex;
+		margin: 0.5em auto;
+		height: 3.7rem;
+		width: 80%;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.scoreboard-icon{
+		background-color: #dddddd;
+		height: 100%;
+		width: 48px;
+	}
+
+	.points {
+		color: rgb(255, 255, 255);
+		background-color: unset;
+		padding-right: 1em;
+		text-align: right;
+		width: min-content;
+		font-size: x-large;
+		border-radius: 5px;
+	}
+
+	.points::-webkit-input-placeholder {
+		color: rgb(255, 255, 255);
+		opacity: 1;
+	}
+
+	.points::-moz-placeholder {
+		color: rgb(255, 255, 255);
+		opacity: 1;
+	}
+
+	/*---------------------------------------------------------------------------*/
+	/*-------------------------NOSCRIPT STYLES-----------------------------------*/
+	/*---------------------------------------------------------------------------*/
+
+	#noscript-container {
+		background-color: #1616169f;
+		height: 100%;
+		width: 100%;
+		z-index: 0;
+		position: absolute;
+
+	}
+
+	#ns-content {
+		padding: 3rem;
+		justify-content: space-around;
+		display: flex;
+		position: absolute;
+		height: 40%;
+		width: 80%;
+		top: 35%;
+		left: 10%;
+		background-color: white;
+		border-radius: 10px;
+		flex-direction: column;
+	}
+
+	#no-javascript{
+		margin: auto;
+		height: 8rem;
+		width: 8rem;
+	}
+
+	#ns-text-container{
+		margin: auto;
+		text-align: center;
+	}
+
+
+}
+
+
+/*Pantalla de móvil ancha*/
+@media only screen and (max-width: 768px) {
+
+	body{
+		background: rgba(5, 74, 43, 0.904)
+		radial-gradient(rgba(255, 255, 255, 0.712) 10%, transparent 1%);
+		background-size: 30px 30px;
+		background-position: -5px -5px;
+		height: 100vh;
+		width: 100vw;
+		display: grid;
+		grid-template: 
+		"nav-bar nav-bar nav-bar"
+		". scores ."
+		". scores ."
+		". slots ."
+		". slots .";
+	}
+
+/*---------------------------------------------------------------------------*/
+/*------------------------------HEADER---------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+	header {	
+		height: 10vh;
+		width: 100vw;
+		background-color: #333;
+		border: 1px solid rgb(87, 87, 87);
+		display: flex;
+		flex-direction: row;
+		grid-area: nav-bar;
+	}
+
+	.link-container > a {
+		display: block;
+		color: white;
+		margin: 0.2rem 0.5rem;
+		text-align: center;
+		text-decoration: none;
+		width: 40%;
+		height: 90%;
+		align-content: center;
+	}
+
+	#home-lnk-container {
+		direction: rtl;
+	}
+
+	#slots-lnk-container {
+		direction: ltr;
+	}
+
+	.link-container > a:hover {
+		background-color: rgb(87, 87, 87);
+		border-radius: 5px;
+		width: 40%;
+		height: 90%;
+		color: rgb(255, 203, 32);
+}
+
+	/*---------------------------------------------------------------------------*/
+	/*----------------------------SCOREBOARD-------------------------------------*/
+	/*---------------------------------------------------------------------------*/
+
+	#scoreboard{
+		background-color: #333;
+		grid-area: scores;
+		border: 2px solid rgb(87, 87, 87);
+		width: 90vw;
+	}
+
+	#user-score{
+		display: flex;
+		flex-direction: row;
+		color: white;
+		text-align: center;
+		font-size: x-large;
+		width: 100%;
+		justify-content: center;
+	}
+
+	#score-label{
+		margin-right: 15px;
+	}
+
+	#score{
+		color: rgb(255, 203, 32);
+		font-size: x-large;
+		text-align: right;
+		height: 95%;
+		background-color: unset;
+		border-radius: 5px;
+	}
+
+	/*Válido só para Firefox e similares*/
+	#score::-moz-placeholder{
+		color: rgb(255, 203, 32);
+		opacity: 1;
+	}
+
+	/*Válido só para Chromium e similares*/
+	#score::-webkit-input-placeholder{
+		color: rgb(255, 203, 32);
+		opacity: 1;
+	}
+
+	#conditions-p{
+		text-align: center;
+		font-size: x-large;
+		color: white;
+	}
+
+	.scoreboard-row{
+		display: flex;
+		margin: 0.5em auto;
+		height: 3.7rem;
+		width: 80%;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.scoreboard-icon{
+		background-color: #dddddd;
+		height: 100%;
+		width: 48px;
+	}
+
+	.points {
+		color: rgb(255, 255, 255);
+		background-color: unset;
+		padding-right: 1em;
+		text-align: right;
+		width: min-content;
+		font-size: x-large;
+		border-radius: 5px;
+	}
+
+	.points::-webkit-input-placeholder {
+		color: rgb(255, 255, 255);
+		opacity: 1;
+	}
+
+	.points::-moz-placeholder {
+		color: rgb(255, 255, 255);
+		opacity: 1;
+	}
+
+	/*---------------------------------------------------------------------------*/
+	/*-------------------------NOSCRIPT STYLES-----------------------------------*/
+	/*---------------------------------------------------------------------------*/
+
+	#noscript-container {
+		background-color: #1616169f;
+		height: 100%;
+		width: 100%;
+		z-index: 0;
+		position: absolute;
+
+	}
+
+	#ns-content {
+		padding: 3rem;
+		justify-content: space-around;
+		display: flex;
+		position: absolute;
+		height: 40%;
+		width: 80%;
+		top: 35%;
+		left: 10%;
+		background-color: white;
+		border-radius: 10px;
+		flex-direction: column;
+	}
+
+	#no-javascript{
+		margin: auto;
+		height: 8rem;
+		width: 8rem;
+	}
+
+	#ns-text-container{
+		margin: auto;
+		text-align: center;
+	}
+
+
+}
