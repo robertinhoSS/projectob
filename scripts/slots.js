@@ -53,7 +53,7 @@ function initialState(){
   for(let outerI = 0; outerI < distribution.length; outerI++ ){
     for(let innerI = 0; innerI < distribution[outerI].length; innerI++){
       let rngSymbol = symbols[randomSymbol()].name
-      distribution[outerI][innerI].insertAdjacentHTML('beforeend', `<img class="symbol ${rngSymbol}" src="${assets+rngSymbol}.png">`)
+      distribution[outerI][innerI].insertAdjacentHTML('beforeend', `<img class="symbol ${rngSymbol}" src="${assets+rngSymbol}.webp">`)
     }
   }
 }
