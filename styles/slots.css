@@ -159,6 +159,9 @@ header {
 }
 
 #spin-button {
+	font-size: 16px;
+	font-family: Pixeloid;
+	color: #fff822;
 	margin: 2rem 60%;
 	height: 4rem;
 	width: 10rem;
@@ -252,6 +255,10 @@ header {
 	height: 95%;
 	background-color: unset;
 	border-radius: 5px;
+}
+
+#point{
+	color: rgb(255, 203, 32);
 }
 
 /*Válido só para Firefox e similares*/

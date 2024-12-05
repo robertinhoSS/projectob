@@ -2,6 +2,7 @@
 const assets = "../assets/"
 
 //Declaración de elementos do HTML
+const currentScore = document.querySelector('#score')
 const slotMachine = document.querySelector('#slot-machine')
 const spinButton = document.querySelector('#spin-button')
 const winMessage = document.querySelector('#win-message')
@@ -36,11 +37,14 @@ const symbols = [
   {name: 'seven', points: 1000},
   {name: 'bell', points: 500},
   {name: 'bar', points: 250}
-];
+]
 
 //Mensaxes de fin
 const win = "WIN  WIN  WIN  WIN  WIN  WIN  WIN  WIN  WIN  WIN  WIN  WIN"
 const lose = "LOSE  LOSE  LOSE  LOSE  LOSE  LOSE  LOSE  LOSE  LOSE  LOSE  "
+
+//Estado de la puntuación
+let scoreState = JSON.parse(localStorage.getItem('projectob_userScore'))
 
 //Selección dun simbolo aleatorio 
 function randomSymbol(){
@@ -49,6 +53,7 @@ function randomSymbol(){
 
 //Ocorre cando se actualiza a páxina ou se abre por primeira vez 
 function initialState(){
+  scoreState = JSON.parse(localStorage.getItem('projectob_userScore'))
   //Selección aleatoria de simbolos ao inicio
   for(let outerI = 0; outerI < distribution.length; outerI++ ){
     for(let innerI = 0; innerI < distribution[outerI].length; innerI++){
@@ -56,10 +61,10 @@ function initialState(){
       distribution[outerI][innerI].insertAdjacentHTML('beforeend', `<img class="symbol ${rngSymbol}" src="${assets+rngSymbol}.webp">`)
     }
   }
+  currentScore.setAttribute('value', String(scoreState.score))
 }
-initialState()
 
-function clearState(){
+function clearRolls(){
   for(let outerI = 0; outerI < distribution.length; outerI++ ){
     for(let innerI = 0; innerI < distribution[outerI].length; innerI++){
       let child = distribution[outerI][innerI].lastElementChild
@@ -81,17 +86,40 @@ function shuffleArray(array){
 
 //Función do botón
 function spinReels() {
-  clearState()
+  clearRolls()
+  calculateScore('coin')
   initialState()
-  setTimeout(checkForWin, 500);
+  setTimeout(checkForWin, 500)
+  currentScore.setAttribute('value', String(scoreState.score))
 }
 
 //Acciona a tragaperras ao pulsar o botón
 spinButton.addEventListener('click', spinReels);
 
 //Calcula os puntos cada vez que se consigue unha liña
-function calculateScore(){
-//TODO: Manipulate DOM to handle some score system
+function calculateScore(node){
+  let rating = symbols.find( symbol => symbol.name == node)
+  if(rating){
+    window.localStorage.setItem('projectob_userScore', JSON.stringify({
+      ...scoreState, score: scoreState.score+rating.points
+    }))
+  }else{
+    window.localStorage.setItem('projectob_userScore', JSON.stringify({
+      ...scoreState, score: scoreState.score-10
+    }))
+  }
+  scoreState = JSON.parse(localStorage.getItem('projectob_userScore'))
+  currentScore.setAttribute('value', String(scoreState.score))
+}
+
+function feedbackMessage(result) {
+  setTimeout(2000)
+  winMessage.textContent = `${result}`
+  if(result == win){
+    winMessage.style.color = 'green'
+  }else{
+    winMessage.style.color = 'red'
+  }
 }
 
 function checkForWin() {
@@ -108,45 +136,23 @@ function checkForWin() {
 
   //Resolución
   if(topLeftChild.isEqualNode(topMiddleChild) && topMiddleChild.isEqualNode(topRightChild)){
-    setTimeout(2000)
-    winMessage.textContent = `${win}`
-    winMessage.style.color = 'green'
+    calculateScore(topLeftChild.className.split(' ')[1])
+    feedbackMessage(win)
   }else if(midLeftChild.isEqualNode(midMiddleChild) && midLeftChild.isEqualNode(midRightChild)){
-    setTimeout(2000)
-    winMessage.textContent = `${win}`
-    winMessage.style.color = 'green'
+    calculateScore(midMiddleChild.className.split(' ')[1])
+    feedbackMessage(win)
   }else if(botLeftChild.isEqualNode(botMiddleChild) && botLeftChild.isEqualNode(botRightChild)){
-    setTimeout(2000)
-    winMessage.textContent = `${win}`
-    winMessage.style.color = 'green'
+    calculateScore(botLeftChild.className.split(' ')[1])    
+    feedbackMessage(win)    
   }else if(topLeftChild.isEqualNode(midMiddleChild) && topLeftChild .isEqualNode(botRightChild)){
-    setTimeout(2000)
-    winMessage.textContent = `${win}`
-    winMessage.style.color = 'green'
+    calculateScore(midMiddleChild.className.split(' ')[1])
+    feedbackMessage(win)
   }else if(topRightChild.isEqualNode(midMiddleChild) && topRightChild.isEqualNode(botLeftChild)){
-    setTimeout(2000)
-    winMessage.textContent = `${win}`
-    winMessage.style.color = 'green'
+    calculateScore(midMiddleChild.className.split(' ')[1])
+    feedbackMessage(win)
   }else{
-    setTimeout(2000)
-    winMessage.textContent = `${lose}`
-    winMessage.style.color = 'red'
+    feedbackMessage(lose)
   }
 }
 
-/*
-function reelsDebug() {
-  console.table([
-    [topLeft.children[0], topMiddle.children[0], topRight.children[0]],
-    [midLeft.children[0], midMiddle.children[0], midRight.children[0]],
-    [botLeft.children[0], botMiddle.children[0], botRight.children[0]]
-  ])
-
-  console.log(topLeft.children[0] == topMiddle.children[0], topMiddle.children[0] == topRight.children[0])
-  console.log(midLeft.children[0] == midMiddle.children[0], midMiddle.children[0] == midRight.children[0])
-  console.log(botLeft.children[0] == botMiddle.children[0], botMiddle.children[0] == botRight.children[0])
-}
-reelsDebug()
-*/
-  
-  
+initialState()

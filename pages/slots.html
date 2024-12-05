@@ -53,7 +53,7 @@
 				</div>
 			</div>			
 		</div>
-		<button id="spin-button" aria-label="spin"><span/></button>
+		<button id="spin-button" aria-label="spin"><span/>10p</button>
 		<div id="state-message-container">
 			<pre id="win-message">PLAY  PLAY  PLAY  PLAY  PLAY  PLAY  PLAY  PLAY  PLAY  PLAY</pre>
 		</div>
@@ -61,7 +61,8 @@
 	<aside id="scoreboard">
 		<div id="user-score">
 			<label id="score-label" for="score">Score  </label>
-			<input id="score" type="texfield" disabled placeholder="0"/>
+			<input id="score" type="text" disabled placeholder="0"/>
+			<span id="point">p</span>
 		</div>
 		<div>
 			<p id="conditions-p">~Win Conditions~</p>
@@ -134,5 +135,6 @@
 		</div>
 	</aside>
 </body>
+<script src="../scripts/state.js"></script>
 <script src="../scripts/slots.js"></script>
 </html>
