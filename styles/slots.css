@@ -223,7 +223,7 @@ header {
 /*---------------------------------------------------------------------------*/
 
 #scoreboard{
-    background-color: #333;
+    background-color: rgba(87, 84, 84, 0.5);
 	grid-area: scores;
 	height: 90vh;
 	border: 2px solid rgb(87, 87, 87);
